@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizRapido2PM2.Views.PageListAutor"
+             xmlns:conver="clr-namespace:QuizRapido2PM2.Controllers"
+             Title="Lista de Autores">
+
+    <ContentPage.Resources>
+        <conver:Base64ToImage x:Key="BaseString" />
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="Mapa" Clicked="ToolbarItem_Clicked_1" />
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout>
+        <SearchBar x:Name="searchBar" Placeholder="Búsqueda..." TextChanged="OnSearchBarTextChanged"/>
+        <CollectionView x:Name="listautor"
+                        SelectionMode="Single"
+                        SelectionChanged="OnAutorSelected">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Frame HeightRequest="60"
+                               WidthRequest="60"
+                               CornerRadius="40"
+                               HorizontalOptions="Center"
+                               IsClippedToBounds="True"
+                               Padding="0"
+                               BorderColor="Gray"
+                               Margin="0,0,0,0">
+
+                            <Image Grid.Column="0"
+                                   x:Name="imagen"
+                                   Source="{Binding Foto, Converter={StaticResource BaseString}}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="60"
+                                   WidthRequest="60" />
+
+                        </Frame>
+
+
+                        <StackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="{Binding Nombres}" />
+                            <Label Text="{Binding Apellidos}" />
+                        </StackLayout>
+
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+
+    </VerticalStackLayout>
+</ContentPage>

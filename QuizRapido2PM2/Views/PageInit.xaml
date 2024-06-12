@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizRapido2PM2.Views.PageInit"
+             Title="Gestión de autores">
+
+    <VerticalStackLayout>
+
+
+        <Image Source="{Binding Autor.Foto}" 
+               HeightRequest="200" 
+               WidthRequest="200"  
+               Margin="20,0,20,0"
+               BackgroundColor="Azure"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               x:Name="FotoImage"
+               />
+
+        <Button Text="Tomar Imagen" x:Name="btnfoto" Clicked="btnfoto_Clicked" Margin="40,0,40,0"/>
+
+        <Label Text="Nombres" Margin="20,0,20,0" VerticalOptions="Start" HorizontalOptions="Start"/>
+        <Entry Text="{Binding Autor.Nombres}" MaxLength="100" Margin="20,0,20,0" x:Name="Nombres"/>
+
+        <Label Text="Apellidos" Margin="20,0,20,0" VerticalOptions="Start" HorizontalOptions="Start"/>
+        <Entry Text="{Binding Autor.Apellidos}" MaxLength="100" Margin="20,0,20,0" x:Name="Apellidos" />
+
+        <Label Text="Fecha de Nacimiento" Margin="20,0,20,0"  VerticalOptions="Start" HorizontalOptions="Start"/>
+        <DatePicker Date="{Binding Autor.FechaNac}" Margin="20,0,20,0" x:Name="FechaNac" />
+
+        <Label Text="Telefono" Margin="20,0,20,0" VerticalOptions="Start" HorizontalOptions="Start"/>
+        <Entry Text="{Binding Autor.Telefono}"  Margin="20,0,20,0" x:Name="Telefono" />
+
+        <Label Text="Nacionalidad" Margin="20,0,20,0" VerticalOptions="Start" HorizontalOptions="Start"/>
+        <Picker SelectedIndex="{Binding Autor.FechaNac}" Margin="20,0,20,0" x:Name="nationalityPicker" />
+
+        <Button x:Name="btnAceptar" Text="Aceptar" Background="BlueViolet" 
+                Margin="40,0,40,0"
+                TextColor="White" Clicked="btnaceptar_Clicked" />
+
+        <Button x:Name="btnActualizar" Text="Actualizar" Background="BlueViolet"
+                Clicked="OnUpdateClicked"
+                Margin="40,0,40,0"
+                IsVisible="false"/>
+        <Button x:Name="btnEliminar" Text="Eliminar"  Background="BlueViolet"
+                Clicked="OnDeleteClicked" 
+                Margin="40,0,40,0"
+                IsVisible="false"/>
+
+
+    </VerticalStackLayout>
+</ContentPage>
